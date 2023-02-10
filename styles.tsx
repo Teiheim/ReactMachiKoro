@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const PlayingCard = styled.div`
   width:10vw;
-  height:10vh;
+  height:14vw;
   box-sizing:border-box;
   border: 5px solid red;
 `;
