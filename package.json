@@ -7,6 +7,8 @@
     "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.0.0-rc.0",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/material": "^5.11.9",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.2",
     "@xstate/fsm": "^2.0.0",
