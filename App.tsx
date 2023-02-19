@@ -29,6 +29,8 @@ const MachCardDescription = ({ description }: any) => {
         backgroundColor: 'rgba(0,0,0,0.1)',
         color: 'white',
         fontSize: '.8vw',
+        p: 1,
+        //overflow: 'scroll',
       }}
     >
       {description}
@@ -69,18 +71,32 @@ const MachiCard = ({
         }}
       >
         <Stack
-          spacing={1}
+          spacing={'5%'}
           justifyContent={'center'}
           alignItems={'center'}
           sx={{ height: '100%' }}
         >
-          <MachiCardHeader title={'Machi'} />
-          <CardContent sx={{ padding: 0, margin: '0 auto' }}>
+          {/* <MachiCardHeader title={'Machi'} /> */}
+          <CardHeader
+            title={'Wheat Field'}
+            sx={{ m: 0, p: 0, fontSize: '1.1vw' }}
+            avatar={
+              <Box sx={{ border: 1, borderColor: 'white', p: 0.3 }}>
+                {/* {diceActivation} */}
+                {'1'}
+              </Box>
+            }
+          />
+          <CardContent
+            sx={{ padding: 0, margin: '0 auto', borderRadius: '5%' }}
+          >
             <Box
               sx={{ width: '90%', height: '5vw', backgroundColor: 'white' }}
             ></Box>
           </CardContent>
-          <MachCardDescription description={'Testing text here'} />
+          <MachCardDescription
+            description={"Get 1 Coin From The Bank On Anyone's Turn "}
+          />
         </Stack>
       </Card>
     </Box>
