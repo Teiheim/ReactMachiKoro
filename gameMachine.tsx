@@ -1,25 +1,7 @@
 import { useMachine } from '@xstate/react';
 import { createMachine } from 'xstate';
+import { Structure, Landmark, Player} from './types'
 
-interface Structure {
-  cardName: string;
-  amount: number;
-}
-
-interface Landmark {
-  landmarkName:
-    | 'Train Station'
-    | 'Shopping Mall'
-    | 'Amusement Park'
-    | 'Radio Tower';
-  activated: boolean;
-}
-
-interface Player {
-  money: number;
-  structures: Structure[];
-  landmarks: Landmark[];
-}
 
 const machiMachine = createMachine({
   id: 'machiKoro',
