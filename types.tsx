@@ -1,6 +1,8 @@
 export interface Structure {
   cardName: string;
   price: number;
+  activation: number[];
+  description?: string;
   color: 'blue' | 'red' | 'green' | 'purple';
 }
 
@@ -13,9 +15,14 @@ export interface Landmark {
   activated: boolean;
 }
 
+export interface City {
+  cardName: string;
+  amount: number;
+}
+
 export interface Player {
   money: number;
-  structures: Structure[];
+  city: City[];
   landmarks: Landmark[];
 }
 
