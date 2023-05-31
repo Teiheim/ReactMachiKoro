@@ -26,16 +26,16 @@ export interface Player {
   landmarks: Landmark[];
 }
 
-export interface machiKoroCard {
+export interface MachiKoroCard {
   structure: Structure;
   amount: number;
 }
 
-export interface machiKoroDeck {
-  [cardName: string]: machiKoroCard;
+export interface MachiKoroDeck {
+  [cardName: string]: MachiKoroCard;
 }
 
-export interface machiKoroGame {
+export interface MachiKoroGame {
   players: Player[];
   cards: Structure[];
 }

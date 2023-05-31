@@ -171,7 +171,7 @@ export const machiKoroCards = {
     amount: 1,
   },
 };
-export const machiKoroDeckList = Obj.keys(deck) 
+export const machiKoroDeckList = Object.keys(machiKoroCards) 
 export const landmarks = {
   'Train Station': {
     landmarkName: 'Train Station';

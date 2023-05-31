@@ -2,27 +2,45 @@
   "name": "react-ts",
   "version": "0.0.0",
   "private": true,
+  "jest": {
+    "verbose": true,
+    "testMatch": [
+      "**/__tests__/**/*.+(ts|tsx|js)",
+      "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
+  },
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.0.0-rc.0",
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
+    "@jest/types": "^29.0.0",
     "@mui/material": "^5.11.9",
+    "@types/jest": "^29.5.1",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.2",
     "@xstate/fsm": "^2.0.0",
     "@xstate/react": "^3.1.2",
+    "babel-jest": "^29.0.0",
+    "jest": "^29.5.0",
+    "node-notifier": "^8.0.1 || ^9.0.0 || ^10.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-ui-cards": "^3.0.2",
+    "ts-jest": "^29.1.0",
+    "typescript": ">=4.3 <6",
     "xstate": "^4.35.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "jest:watch": "npx jest --watchAll"
   },
   "devDependencies": {
     "react-scripts": "latest"

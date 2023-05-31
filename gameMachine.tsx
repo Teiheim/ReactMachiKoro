@@ -9,6 +9,8 @@ const machiMachine = createMachine({
   context: {
     deck: machiKoroCards,
     players: [],
+    playerInTurn: 0,
+    cardHistory: [],
     roomName: '',
   },
   states: {
