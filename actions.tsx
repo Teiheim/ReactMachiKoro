@@ -25,10 +25,10 @@ const getActivatedCards = (
 };
 
 const redCard = () => {};
-const blueCard = (cards: [{ amount: Number; cardName: String }]) => {
-  const playerIncome = [0,0,0,0]
-  
-
+const blueCard = (
+  cards: [{ amount: Number; cardName: String; player: Number }]
+) => {
+  const playerIncome = [0, 0, 0, 0];
 };
 const greenCard = (cards) => {};
 const purpleCard = () => {};
