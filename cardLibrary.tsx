@@ -174,19 +174,19 @@ export const machiKoroCards = {
 export const machiKoroDeckList = Object.keys(machiKoroCards) 
 export const landmarks = {
   'Train Station': {
-    landmarkName: 'Train Station';
-    activated: false;
+    landmarkName: 'Train Station',
+    activated: false
   };
   'Shopping Mall': {
-    landmarkName: 'Shopping Mall';
-    activated: false;
+    landmarkName: 'Shopping Mall',
+    activated: false
   };
   'Amusement Park': {
-    landmarkName: 'Amusement Park';
-    activated: false;
+    landmarkName: 'Amusement Park',
+    activated: false
   };
   'Radio Tower': {
-    landmarkName: 'Radio Tower';
-    activated: false;
+    landmarkName: 'Radio Tower',
+    activated: false
   };
 };

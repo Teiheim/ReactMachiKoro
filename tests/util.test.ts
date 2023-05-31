@@ -1,7 +1,6 @@
 // activateCards.test.ts
-import { activateCards } from '../utils/activateCards';
-import { City, MachiKoroDeck, Structure } from '../path-to-interfaces';
-import {expect, jest, test} from '@jest/globals';
+import { activateCards } from '../utils';
+import { City, MachiKoroDeck, Structure } from '../types';
 
 describe('activateCards', () => {
   let completeField: City[];
