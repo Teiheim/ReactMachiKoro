@@ -23,7 +23,12 @@ const getActivatedCards = (
     if (canActivateCard) activatedCards[cardColor].push(structure);
   });
 };
-const greenCard = () => {};
+
 const redCard = () => {};
-const blueCard = () => {};
+const blueCard = (cards: [{ amount: Number; cardName: String }]) => {
+  const playerIncome = [0,0,0,0]
+  
+
+};
+const greenCard = (cards) => {};
 const purpleCard = () => {};
