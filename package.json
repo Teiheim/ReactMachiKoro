@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "jest": {
-    "verbose": true,
     "testMatch": [
       "**/__tests__/**/*.+(ts|tsx|js)",
       "**/?(*.)+(spec|test).+(ts|tsx|js)"
