@@ -1,5 +1,5 @@
 // activateCards.test.ts
-import { getActivatedCards } from '../utils';
+import { activateCards } from '../utils';
 import { City, MachiKoroDeck, Structure } from '../types';
 
 describe('activateCards', () => {
@@ -42,11 +42,8 @@ describe('activateCards', () => {
   });
 
   it('should add activated cards to the correct color array', () => {
-    getActivatedCards(completeField, machiKoroCards, dice, activatedCards);
-    expect(activatedCards.blue).toEqual([{
-           "amount": 3,
-           "cardName": "Ranch",
-         }]);
+    activateCards(completeField, machiKoroCards, dice, activatedCards);
+    expect(activatedCards.blue).toEqual(['Ranch']);
     expect(activatedCards.green).toEqual([]);
     expect(activatedCards.red).toEqual([]);
     expect(activatedCards.purple).toEqual([]);
