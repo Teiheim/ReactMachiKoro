@@ -11,5 +11,5 @@
     "sourceMap": true,
     "lib": ["es6", "dom", "es2019"]
   },
-  "include": ["src", "tests"]
+  "include": ["tests"]
 }
