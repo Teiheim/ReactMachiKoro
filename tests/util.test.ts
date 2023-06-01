@@ -120,7 +120,6 @@ describe('Card Money Calculation', () => {
         { amount: 1, cardName: 'Bakery', player: 1 },
         { amount: 3, cardName: 'Bakery', player: 2 },
         { amount: 4, cardName: 'Bakery', player: 3 },
-        { amount: 1, cardName: 'Shopping Mall', player: 0 },
       ];
       const playerTurn = 0;
 
