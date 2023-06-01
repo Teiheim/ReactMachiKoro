@@ -19,11 +19,11 @@ export interface Landmark {
 
 export interface City {
   cardName: string;
-  amount: Number;
+  amount: number;
 }
 
 export interface Player {
-  money: Number;
+  money: number;
   city: City[];
   landmarks: Landmark[];
 }
@@ -40,4 +40,7 @@ export interface MachiKoroDeck {
 export interface MachiKoroGame {
   players: Player[];
   cards: Structure[];
+  playerInTurn: number;
+  cardHistory: Structure[];
+  roomName: string;
 }

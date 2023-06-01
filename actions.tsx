@@ -1,6 +1,6 @@
 import { assign } from 'xstate';
 import { machiKoroCards } from './cardLibrary';
-import { Structure, Player, MachiKoroDeck, City } from './types';
+import { Structure, Player, MachiKoroDeck, City, MachiKoroGame } from './types';
 
 export const startGame = assign({
   //  players: (_, event) => event.players,
@@ -24,7 +24,28 @@ const getActivatedCards = (
   });
 };
 
-const redCard = () => {};
+const redCard = (
+  cards: { amount: number; cardName: string; player: number }[],
+  playerTurn: number,
+  gameContext: MachiKoroGame
+) => {
+  const playerIncome = [0, 0, 0, 0];
+  cards.forEach((card) => {
+    const machiCard = machiKoroCards[card.cardName];
+    console.log(machiCard);
+    if (playerTurn !== card.player) {
+      const playerInTurnMoney = gameContext.players[playerTurn].money;
+      const totalCardIncome = machiCard.structure.income * card.amount;
+      if (playerInTurnMoney < totalCardIncome) {
+        playerIncome[card.player] += playerInTurnMoney;
+        playerIncome[playerTurn] = 0;
+      } else {
+        playerIncome[card.player] += totalCardIncome;
+      }
+    }
+  });
+  return playerIncome;
+};
 const blueCard = (
   cards: [{ amount: number; cardName: string; player: number }],
   numPlayers: Number

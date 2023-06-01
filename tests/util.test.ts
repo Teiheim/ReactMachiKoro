@@ -1,5 +1,5 @@
 // activateCards.test.ts
-import { getActivatedCards, greenCard, blueCard } from '../utils';
+import { getActivatedCards, greenCard, blueCard, redCard } from '../utils';
 import { City, MachiKoroDeck, Structure } from '../types';
 
 describe('activateCards', () => {
@@ -60,7 +60,7 @@ describe('activateCards', () => {
 
   // Add more test cases as needed
 });
-describe('Card Money Calculation', () => {
+describe('Blue/Green Card Money Calculation', () => {
   const machiKoroCards: MachiKoroDeck = {
     wheat_field: {
       structure: {
@@ -126,6 +126,108 @@ describe('Card Money Calculation', () => {
       const playerIncome = greenCard(cards, playerTurn);
 
       expect(playerIncome).toEqual([2, 0, 0, 0]);
+    });
+  });
+});
+
+describe('Red Card Money Calculation', () => {
+  const machiKoroCards: {
+    [cardName: string]: { structure: Structure; amount: number };
+  } = {
+    'Wheat Field': {
+      structure: {
+        cardName: 'Wheat Field',
+        price: 1,
+        activation: [1],
+        description: 'Produces 1 coin',
+        income: 1,
+        industry: 'Primary',
+        color: 'blue',
+      },
+      amount: 4,
+    },
+    Bakery: {
+      structure: {
+        cardName: 'Bakery',
+        price: 1,
+        activation: [2, 3],
+        description: 'Produces 1 coin for each matching dice roll',
+        income: 1,
+        industry: 'Secondary',
+        color: 'green',
+      },
+      amount: 3,
+    },
+    Cafe: {
+      structure: {
+        cardName: 'Cafe',
+        price: 2,
+        activation: [3],
+        description: 'Take 1 coin from the active player on their turn',
+        income: 1,
+        industry: 'Restaurant',
+        color: 'red',
+      },
+      amount: 3,
+    },
+  };
+
+  const gameContext: MachiKoroGame = {
+    players: [
+      {
+        money: 0,
+        city: [],
+        landmarks: [],
+      },
+      {
+        money: 0,
+        city: [],
+        landmarks: [],
+      },
+      {
+        money: 0,
+        city: [],
+        landmarks: [],
+      },
+      {
+        money: 0,
+        city: [],
+        landmarks: [],
+      },
+    ],
+    cards: [],
+    playerInTurn: 0,
+    cardHistory: [],
+    roomName: 'MachiKoro',
+  };
+
+  describe('redCard', () => {
+    it('calculates player income correctly for red cards', () => {
+      gameContext.players[0].money = 10; // Player 0 has 10 coins
+      gameContext.players[1].money = 5; // Player 1 has 5 coins
+      gameContext.players[2].money = 3; // Player 2 has 3 coins
+      gameContext.players[3].money = 8; // Player 3 has 8 coins
+
+      const cards = [
+        { amount: 2, cardName: 'Cafe', player: 0 },
+        { amount: 1, cardName: 'Cafe', player: 1 },
+        { amount: 3, cardName: 'Cafe', player: 2 },
+        { amount: 4, cardName: 'Cafe', player: 3 },
+      ];
+      const playerTurn = 0;
+
+      const playerIncome = redCard(
+        cards,
+        playerTurn,
+        gameContext,
+        machiKoroCards
+      );
+
+      expect(playerIncome).toEqual([2, 1, 3, 4]);
+      expect(gameContext.players[0].money).toBe(8); // Player 0's money should be reduced by the amount taken from other players
+      expect(gameContext.players[1].money).toBe(5); // Player 1's money should not change
+      expect(gameContext.players[2].money).toBe(3); // Player 2's money should not change
+      expect(gameContext.players[3].money).toBe(8); // Player 3's money should not change
     });
   });
 });
