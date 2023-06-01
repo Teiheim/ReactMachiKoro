@@ -19,7 +19,7 @@ export const getActivatedCards = (
 };
 
 export const blueCard = (
-  cards: [{ amount: number; cardName: string; player: number }],
+  cards: { amount: number; cardName: string; player: number }[],
   numPlayers: Number
 ) => {
   const playerIncome = [0, 0, 0, 0];
@@ -31,7 +31,7 @@ export const blueCard = (
 };
 //Take note of the Shopping mall multiplyer
 export const greenCard = (
-  cards: [{ amount: number; cardName: string; player: number }],
+  cards: { amount: number; cardName: string; player: number }[],
   playerTurn: number
 ) => {
   //exclude Cheese Factory
