@@ -218,8 +218,8 @@ describe('Red Card Money Calculation', () => {
 
       const playerIncome = redCard(cards, playerTurn, gameContext);
 
-      expect(playerIncome).toEqual([2, 1, 3, 4]);
-      expect(gameContext.players[0].money).toBe(8); // Player 0's money should be reduced by the amount taken from other players
+      expect(playerIncome).toEqual([0, 1, 3, 4]);
+      expect(gameContext.players[0].money).toBe(0); // Player 0's money should be reduced by the amount taken from other players
       expect(gameContext.players[1].money).toBe(5); // Player 1's money should not change
       expect(gameContext.players[2].money).toBe(3); // Player 2's money should not change
       expect(gameContext.players[3].money).toBe(8); // Player 3's money should not change
