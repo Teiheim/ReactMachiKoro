@@ -1,6 +1,6 @@
 // activateCards.test.ts
 import { getActivatedCards, greenCard, blueCard, redCard } from '../utils';
-import { City, MachiKoroDeck, Structure } from '../types';
+import { City, MachiKoroDeck, Structure, MachiKoroGame } from '../types';
 
 describe('activateCards', () => {
   let completeField: City[];
@@ -216,12 +216,7 @@ describe('Red Card Money Calculation', () => {
       ];
       const playerTurn = 0;
 
-      const playerIncome = redCard(
-        cards,
-        playerTurn,
-        gameContext,
-        machiKoroCards
-      );
+      const playerIncome = redCard(cards, playerTurn, gameContext);
 
       expect(playerIncome).toEqual([2, 1, 3, 4]);
       expect(gameContext.players[0].money).toBe(8); // Player 0's money should be reduced by the amount taken from other players
