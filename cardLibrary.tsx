@@ -5,6 +5,8 @@ export const machiKoroCards = {
       price: 1,
       color: 'blue',
       activationNumbers: [1],
+      income: 1,
+      industry: 'Primary',
     },
     amount: 5,
   },
@@ -14,6 +16,8 @@ export const machiKoroCards = {
       price: 1,
       color: 'blue',
       activationNumbers: [2],
+      income: 1,
+      industry: 'Primary',
     },
     amount: 3,
   },
@@ -23,6 +27,8 @@ export const machiKoroCards = {
       price: 1,
       color: 'green',
       activationNumbers: [2, 3],
+      income: 1,
+      industry: 'Secondary',
     },
     amount: 2,
   },
@@ -32,6 +38,8 @@ export const machiKoroCards = {
       price: 2,
       color: 'red',
       activationNumbers: [3],
+      income: 1,
+      industry: 'Service',
     },
     amount: 4,
   },
@@ -41,6 +49,8 @@ export const machiKoroCards = {
       price: 2,
       color: 'green',
       activationNumbers: [4],
+      income: 3,
+      industry: 'Secondary',
     },
     amount: 3,
   },
@@ -50,6 +60,8 @@ export const machiKoroCards = {
       price: 3,
       color: 'blue',
       activationNumbers: [5],
+      income: 1,
+      industry: 'Primary',
     },
     amount: 2,
   },
@@ -59,6 +71,8 @@ export const machiKoroCards = {
       price: 5,
       color: 'green',
       activationNumbers: [7],
+      income: 3,
+      industry: 'Secondary',
     },
     amount: 2,
   },
@@ -68,6 +82,8 @@ export const machiKoroCards = {
       price: 3,
       color: 'green',
       activationNumbers: [8],
+      income: 3,
+      industry: 'Secondary',
     },
     amount: 2,
   },
@@ -77,6 +93,8 @@ export const machiKoroCards = {
       price: 7,
       color: 'purple',
       activationNumbers: [6],
+      income: 0,
+      industry: 'Major',
     },
     amount: 1,
   },
@@ -86,6 +104,8 @@ export const machiKoroCards = {
       price: 6,
       color: 'blue',
       activationNumbers: [9],
+      income: 5,
+      industry: 'Primary',
     },
     amount: 6,
   },
@@ -95,6 +115,8 @@ export const machiKoroCards = {
       price: 3,
       color: 'red',
       activationNumbers: [9, 10],
+      income: 2,
+      industry: 'Service',
     },
     amount: 2,
   },
@@ -104,6 +126,8 @@ export const machiKoroCards = {
       price: 3,
       color: 'blue',
       activationNumbers: [10],
+      income: 3,
+      industry: 'Primary',
     },
     amount: 6,
   },
@@ -113,6 +137,8 @@ export const machiKoroCards = {
       price: 2,
       color: 'green',
       activationNumbers: [11, 12],
+      income: 2,
+      industry: 'Secondary',
     },
     amount: 2,
   },
@@ -122,6 +148,8 @@ export const machiKoroCards = {
       price: 6,
       color: 'purple',
       activationNumbers: [6],
+      income: 0,
+      industry: 'Major',
     },
     amount: 1,
   },
@@ -131,62 +159,29 @@ export const machiKoroCards = {
       price: 8,
       color: 'purple',
       activationNumbers: [6],
-    },
-    amount: 1,
-  },
-  'Train Station': {
-    structure: {
-      cardName: 'Train Station',
-      price: 4,
-      color: 'purple',
-      activationNumbers: [6],
-    },
-    amount: 1,
-  },
-  'Shopping Mall': {
-    structure: {
-      cardName: 'Shopping Mall',
-      price: 10,
-      color: 'purple',
-      activationNumbers: [6],
-    },
-    amount: 1,
-  },
-  'Amusement Park': {
-    structure: {
-      cardName: 'Amusement Park',
-      price: 16,
-      color: 'purple',
-      activationNumbers: [6],
-    },
-    amount: 1,
-  },
-  'Radio Tower': {
-    structure: {
-      cardName: 'Radio Tower',
-      price: 22,
-      color: 'purple',
-      activationNumbers: [6],
+      income: 0,
+      industry: 'Major',
     },
     amount: 1,
   },
 };
-export const machiKoroDeckList = Object.keys(machiKoroCards) 
+
+export const machiKoroDeckList = Object.keys(machiKoroCards);
 export const landmarks = {
   'Train Station': {
     landmarkName: 'Train Station',
-    activated: false
-  };
+    activated: false,
+  },
   'Shopping Mall': {
     landmarkName: 'Shopping Mall',
-    activated: false
-  };
+    activated: false,
+  },
   'Amusement Park': {
     landmarkName: 'Amusement Park',
-    activated: false
-  };
+    activated: false,
+  },
   'Radio Tower': {
     landmarkName: 'Radio Tower',
-    activated: false
-  };
+    activated: false,
+  },
 };

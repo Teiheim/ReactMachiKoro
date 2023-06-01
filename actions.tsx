@@ -26,9 +26,19 @@ const getActivatedCards = (
 
 const redCard = () => {};
 const blueCard = (
-  cards: [{ amount: Number; cardName: String; player: Number }]
+  cards: [{ amount: number; cardName: string; player: number }],
+  numPlayers: Number
 ) => {
   const playerIncome = [0, 0, 0, 0];
+  cards.forEach((card) => {
+    const machiCard = machiKoroCards[card.cardName];
+    playerIncome[card.player] += machiCard.structure.income * card.amount;
+  });
 };
-const greenCard = (cards) => {};
+//Take note of the Shopping mall multiplyer
+const greenCard = (cards) => {
+  //exclude Cheese Factory
+  //exclude Furniture Factory
+  //exclude Fruit and Veggie
+};
 const purpleCard = () => {};
