@@ -34,11 +34,22 @@ const blueCard = (
     const machiCard = machiKoroCards[card.cardName];
     playerIncome[card.player] += machiCard.structure.income * card.amount;
   });
+  return playerIncome;
 };
 //Take note of the Shopping mall multiplyer
-const greenCard = (cards) => {
+const greenCard = (
+  cards: [{ amount: number; cardName: string; player: number }],
+  playerTurn: number
+) => {
   //exclude Cheese Factory
   //exclude Furniture Factory
   //exclude Fruit and Veggie
+  const playerIncome = [0, 0, 0, 0];
+  cards.forEach((card) => {
+    const machiCard = machiKoroCards[card.cardName];
+    if (playerTurn === card.player)
+      playerIncome[card.player] += machiCard.structure.income * card.amount;
+  });
+  return playerIncome;
 };
 const purpleCard = () => {};
