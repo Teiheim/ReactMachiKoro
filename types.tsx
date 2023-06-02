@@ -41,7 +41,7 @@ export interface MachiKoroDeck {
 
 export interface MachiKoroGame {
   players: Player[];
-  cards: Structure[];
+  cards: MachiKoroDeck;
   playerInTurn: number;
   cardHistory: Structure[];
   roomName: string;

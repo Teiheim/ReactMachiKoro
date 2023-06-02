@@ -1,5 +1,6 @@
 import { assign } from 'xstate';
 import { machiKoroCards } from '../cardLibrary';
+import { decrementCard, removeMoneyFromPlayer } from './utils';
 import {
   Structure,
   Player,
@@ -8,17 +9,46 @@ import {
   MachiKoroGame,
 } from '../types';
 
-export const startGame = assign({
-  //  players: (_, event) => event.players,
-});
-
-export const setGame = assign({
-  players: (_,event) => [],
+export const createGame = assign({
+  players: (_, event) => [],
   //@NOTE write about this in blog
-  cards: () => structuredClone(machiKoroCards),
+  cards: (_, event) => {
+    const newGameDeck = structuredClone(machiKoroCards);
+    event.data.players.forEach(() => {
+      decrementCard(newGameDeck, 'Wheat Field');
+      decrementCard(newGameDeck, 'Bakery');
+    });
+    return newGameDeck;
+  },
   playerInTurn: 0,
   cardHistory: [],
-  roomName: (_, event) => event.roomName,
+  roomName: (_, event) => event.data.roomName,
+});
+
+export const setGameTurn = assign({
+  players: (_, event) => event.data.players,
+  cards: (_, event) => event.data.cards,
+  playerInTurn: (_, event) => event.data.playerInTurn,
+  cardHistory: (_, event) => event.data.cardHistory,
+  roomName: (_, event) => event.data.roomName,
+});
+
+export const addStructureToPlayer = assign({
+  cards: (
+    context: MachiKoroGame,
+    event: { type: string; data: { cards: { name: string; amount: number }[] } }
+  ) => {
+    return event.data.cards.reduce(
+      (machiDeck: MachiKoroDeck, card) =>
+        decrementCard(machiDeck, card.name, card.amount),
+      context.cards
+    );
+  },
+  //decrementCard(context.cards,event.data.cardNames,),
+  // players: (context: MachiKoroGame, event: { type: string; data: { cards: { name: string; amount: number }[] } }) => {
+  //   const oldPlayers = context.players
+  //   event.data.cards.reduce((players: Player[],card) => removeMoneyFromPlayer(),context.players)
+  // },
 });
 
 export const executeEffects = assign({});

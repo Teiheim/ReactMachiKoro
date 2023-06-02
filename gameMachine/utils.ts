@@ -29,7 +29,7 @@ export const decrementCard = (
   machiDeck: MachiKoroDeck,
   cardName,
   newAmount = 1
-) => {
+): MachiKoroDeck => {
   return {
     ...machiDeck,
     [cardName]: {
@@ -44,16 +44,35 @@ export const addCardToPlayer = (
   playerNum: number,
   card: string,
   amount = 1
-) => {
+): Player[] => {
   const newPlayers = [...players];
   newPlayers[playerNum].city?.[card]
     ? (newPlayers[playerNum].city[card].amount += amount)
-    : newPlayers[playerNum].city?.[card].push({
+    : newPlayers[playerNum].city.push({
         cardName: card,
         amount: amount,
       });
   return newPlayers;
 };
+
+export const removeMoneyFromPlayer = (
+  players: Player[],
+  playerNum,
+  amount = 1
+) => {
+  const newPlayerMoney = players[playerNum].money - amount;
+  return newPlayerMoney > 0 ? newPlayerMoney : 0;
+};
+
+export const getPlayerMoney = (machiGame: MachiKoroGame, playerNum) => {
+  return machiGame.players[playerNum].money;
+};
+
+export const areCardsLeftToBuild = (machiGame: MachiKoroGame, card: string) => {
+  return machiGame.cards[card].amount > 0;
+};
+
+export const purchaseLandmark = () => {};
 
 export const getActivatedCards = (
   completeField,

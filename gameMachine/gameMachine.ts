@@ -23,7 +23,7 @@ export const machiMachine = createMachine({
         enterName: {
           //The UI asks for a name
           on: {
-            INPUT_NAME: {
+            SETUP_GAME: {
               target: 'playGame.setBoard',
               //actions: console.log(//save name in context)
             },
