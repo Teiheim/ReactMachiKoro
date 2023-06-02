@@ -1,6 +1,21 @@
 // activateCards.test.ts
-import { getActivatedCards, greenCard, blueCard, redCard } from '../utils';
-import { City, MachiKoroDeck, Structure, MachiKoroGame } from '../types';
+import {
+  getActivatedCards,
+  greenCard,
+  blueCard,
+  redCard,
+  createPlayers,
+  decrementCard,
+  addCardToPlayer,
+} from '../gameMachine/utils';
+import {
+  City,
+  MachiKoroDeck,
+  Structure,
+  MachiKoroGame,
+  Player,
+  Landmark,
+} from '../types';
 
 describe('activateCards', () => {
   let completeField: City[];
@@ -176,23 +191,31 @@ describe('Red Card Money Calculation', () => {
     players: [
       {
         money: 0,
+        playerName: 'player1',
+        id: '1',
         city: [],
-        landmarks: [],
+        landmarks: new Set<Landmark>(),
       },
       {
         money: 0,
+        playerName: 'player2',
+        id: '2',
         city: [],
-        landmarks: [],
+        landmarks: new Set<Landmark>(),
       },
       {
         money: 0,
+        playerName: 'player3',
+        id: '3',
         city: [],
-        landmarks: [],
+        landmarks: new Set<Landmark>(),
       },
       {
         money: 0,
+        playerName: 'player4',
+        id: '4',
         city: [],
-        landmarks: [],
+        landmarks: new Set<Landmark>(),
       },
     ],
     cards: [],
@@ -219,6 +242,76 @@ describe('Red Card Money Calculation', () => {
       const playerIncome = redCard(cards, playerTurn, gameContext);
 
       expect(playerIncome).toEqual([0, 1, 3, 4]);
+    });
+  });
+});
+
+describe('Interaction with Game State Type', () => {
+  describe('createPlayers', () => {
+    test('creates players with initial properties', () => {
+      const players: { name: string; id: string }[] = [
+        { name: 'Player 1', id: '1' },
+        { name: 'Player 2', id: '2' },
+      ];
+      const machiPlayers = createPlayers(players);
+
+      expect(machiPlayers).toHaveLength(2);
+
+      machiPlayers.forEach((player) => {
+        expect(player).toHaveProperty('playerName');
+        expect(player).toHaveProperty('id');
+        expect(player).toHaveProperty('money', 3);
+        expect(player).toHaveProperty('city');
+        expect(player).toHaveProperty('landmarks');
+      });
+    });
+  });
+
+  describe('decrementCard', () => {
+    test('decrements the amount of a card in the deck', () => {
+      const machiDeck: MachiKoroDeck = {
+        'Wheat Field': {
+          structure: {
+            cardName: 'Wheat Field',
+            price: 1,
+            color: 'blue',
+            activation: [1],
+            income: 1,
+            industry: 'Primary',
+          },
+          amount: 5,
+        },
+      };
+      const cardName = 'Wheat Field';
+      const newAmount = 2;
+
+      const newDeck = decrementCard(machiDeck, cardName, newAmount);
+
+      expect(newDeck[cardName]).toHaveProperty('amount', 3);
+    });
+  });
+
+  describe('addCardToPlayer', () => {
+    test("adds a card to the player's city", () => {
+      const players = [
+        {
+          playerName: 'Player 1',
+          id: '1',
+          money: 10,
+          city: [{ cardName: 'Bakery', amount: 1 }],
+          landmarks: new Set<Landmark>(),
+        },
+      ];
+      const playerNum = 0;
+      const card = 'Wheat Field';
+      const amount = 2;
+
+      const newPlayers = addCardToPlayer(players, playerNum, card, amount);
+
+      expect(newPlayers[playerNum].city).toContainEqual({
+        cardName: 'Wheat Field',
+        amount: 2,
+      });
     });
   });
 });

@@ -1,11 +1,11 @@
 import { useMachine } from '@xstate/react';
 import { createMachine } from 'xstate';
-import { Structure, Landmark, Player } from './types';
-import { machiKoroCards } from './cardLibrary';
+import { Structure, Landmark, Player } from '../types';
+import { machiKoroCards } from '../cardLibrary';
 
-const machiMachine = createMachine({
+export const machiMachine = createMachine({
   id: 'machiKoro',
-  initial: 'gameRoom.joinGame',
+  initial: 'gameRoom.entername',
   context: {
     deck: machiKoroCards,
     players: [],
@@ -22,6 +22,12 @@ const machiMachine = createMachine({
         },
         enterName: {
           //The UI asks for a name
+          on: {
+            INPUT_NAME: {
+              target: 'playGame.setBoard',
+              //actions: console.log(//save name in context)
+            },
+          },
         },
         otherPlayers: {
           //Connection now waits for other players to join

@@ -1,7 +1,7 @@
 export interface Structure {
   cardName: string;
-  price: Number;
-  activation: Number[];
+  price: number;
+  activation: number[];
   description?: string;
   income: number;
   industry: string;
@@ -23,14 +23,16 @@ export interface City {
 }
 
 export interface Player {
+  playerName: string;
+  id: string;
   money: number;
   city: City[];
-  landmarks: Landmark[];
+  landmarks: Set<Landmark>;
 }
 
 export interface MachiKoroCard {
   structure: Structure;
-  amount: Number;
+  amount: number;
 }
 
 export interface MachiKoroDeck {
