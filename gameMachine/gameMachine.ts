@@ -32,11 +32,11 @@ export const machiMachine = createMachine({
         otherPlayers: {
           //Connection now waits for other players to join
         },
+        setBoard: {}
       },
     },
     playGame: {
       states: {
-        setBoard: {},
         rollDice: {},
         cardEffects: {},
         buyStructures: {},
