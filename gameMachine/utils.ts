@@ -59,9 +59,14 @@ export const removeMoneyFromPlayer = (
   players: Player[],
   playerNum,
   amount = 1
-) => {
-  const newPlayerMoney = players[playerNum].money - amount;
-  return newPlayerMoney > 0 ? newPlayerMoney : 0;
+): Player[] => {
+  const oldPlayers = structuredClone(players);
+  const newPlayerMoney =
+    oldPlayers[playerNum].money - amount > 0
+      ? players[playerNum].money - amount
+      : 0;
+  players[playerNum].money = newPlayerMoney;
+  return oldPlayers;
 };
 
 export const getPlayerMoney = (machiGame: MachiKoroGame, playerNum) => {

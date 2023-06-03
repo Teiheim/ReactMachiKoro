@@ -44,11 +44,20 @@ export const addStructureToPlayer = assign({
       context.cards
     );
   },
-  //decrementCard(context.cards,event.data.cardNames,),
-  // players: (context: MachiKoroGame, event: { type: string; data: { cards: { name: string; amount: number }[] } }) => {
-  //   const oldPlayers = context.players
-  //   event.data.cards.reduce((players: Player[],card) => removeMoneyFromPlayer(),context.players)
-  // },
+  players: (
+    context: MachiKoroGame,
+    event: {
+      type: string;
+      data: { cards: { name: string; amount: number }[]; playerNum: number };
+    }
+  ) => {
+    const oldPlayers = context.players;
+    event.data.cards.reduce(
+      (players: Player[], card) =>
+        removeMoneyFromPlayer(players, event.data.playerNum, card.amount),
+      oldPlayers
+    );
+  },
 });
 
 export const executeEffects = assign({});
