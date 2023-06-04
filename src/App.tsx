@@ -21,6 +21,9 @@ import Paper from '@mui/material/Paper';
 
 import { ColorButton } from './MachiButton';
 import { CustomAccordion } from './BottomBar';
+import MachiCard2 from './MachiCard';
+import StructureCatalog from './StructureCatalog';
+import { machiKoroCards } from './cardLibrary';
 
 const machiRed = '#3b350ff';
 const machiGreen = '#534d2b';
@@ -145,7 +148,7 @@ export default function App() {
         </Box>
         <CardChip cardCount={1} cardName={'Wheat Field'}></CardChip>
       </div> */}
-      <Box
+      {/* <Box
         sx={{
           display: 'flex',
           justifyContent: 'center',
@@ -170,11 +173,14 @@ export default function App() {
           </Box>
         </Paper>
       </Box>
-      <ColorButton>Button</ColorButton>
-      <CustomAccordion />
-      <Accordion expanded={true}>
+      <ColorButton>Button</ColorButton> */}
+      <CustomAccordion title={'The Title'} content={'The Content'} />
+      <CardChip cardCount={2} cardName={'Named'}></CardChip>
+      <MachiCard2 card={machiKoroCards['Wheat Field']}></MachiCard2>
+      {/* <Accordion expanded={true}>
         <div>"Hey"</div>
-      </Accordion>
+      </Accordion> */}
+      {/* <StructureCatalog /> */}
     </GameUI>
   );
 }
