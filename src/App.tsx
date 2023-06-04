@@ -5,6 +5,7 @@ import { PlayingCard } from './styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
+import Accordion from '@mui/material/Accordion';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 
@@ -17,6 +18,9 @@ import Container from '@mui/material/Container';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
 import Paper from '@mui/material/Paper';
+
+import { ColorButton } from './MachiButton';
+import { CustomAccordion } from './BottomBar';
 
 const machiRed = '#3b350ff';
 const machiGreen = '#534d2b';
@@ -166,6 +170,11 @@ export default function App() {
           </Box>
         </Paper>
       </Box>
+      <ColorButton>Button</ColorButton>
+      <CustomAccordion />
+      <Accordion expanded={true}>
+        <div>"Hey"</div>
+      </Accordion>
     </GameUI>
   );
 }
