@@ -1,13 +1,17 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { MachiKoroCard } from '../types';
 import { ColorButton } from '../MachiButton/MachiButton';
 import { CardHeader } from '@mui/material';
 import { useState } from 'react';
+import { getColor } from '../utils';
+import {
+  StyledMachiCard,
+  StyledMachiCardHeader,
+  StyledMachiCardMedia,
+  StyledMachiCardContent,
+  StyledMachiCardActions,
+} from './MachiCardStyles';
 
 const flexItemStyle = {
   display: 'block',
@@ -19,7 +23,14 @@ const flexItemStyle = {
   width: '100%',
 };
 
-export default function MediaCard({ card }: { card: MachiKoroCard }) {
+export default function MediaCard({
+  card,
+  color,
+}: {
+  card: MachiKoroCard;
+  color: 'blue' | 'red' | 'green' | 'purple';
+}) {
+  console.log(card);
   const [purchaseAmount, setAmount] = useState(0);
   const changePurchaseAmount = (sign: '+' | '-') => {
     sign === '+'
@@ -27,19 +38,16 @@ export default function MediaCard({ card }: { card: MachiKoroCard }) {
       : setAmount(purchaseAmount - 1);
   };
   return (
-    <Card
-      sx={{
-        maxWidth: 345,
-        border: '2px solid black',
-        backgroundColor: '#00A8E8',
-        boxShadow: '2px 2px 0px 0px rgba(0,0,0,1)',
-      }}
-    >
-      <CardHeader
+    <StyledMachiCard color={getColor(color)}>
+      <StyledMachiCardHeader
         title={card.structure.cardName}
-        sx={{ color: 'white', fontWeight: 700 }}
+        sx={{ color: 'white', fontWeight: 700, fontSize: '100%' }}
         subheader={`Industry: ${card.structure.industry}`}
-        subheaderTypographyProps={{ color: 'white', fontWeight: 700 }}
+        subheaderTypographyProps={{
+          color: 'white',
+          fontWeight: 700,
+          fontSize: '100%',
+        }}
       >
         <Typography
           gutterBottom
@@ -49,13 +57,13 @@ export default function MediaCard({ card }: { card: MachiKoroCard }) {
         >
           {card.structure.cardName}
         </Typography>
-      </CardHeader>
-      <CardMedia
+      </StyledMachiCardHeader>
+      <StyledMachiCardMedia
         sx={{ height: 140 }}
         //image="/static/images/cards/contemplative-reptile.jpg"
         title="green iguana"
       />
-      <CardContent>
+      <StyledMachiCardContent>
         <Typography variant="body2" color="white" fontWeight="700">
           <div style={flexItemStyle}>
             Activation: {card.structure.activation}
@@ -64,8 +72,8 @@ export default function MediaCard({ card }: { card: MachiKoroCard }) {
           <div>Price: {card.structure.price}$</div>
           <div>Amount: {card.amount}</div>
         </Typography>
-      </CardContent>
-      <CardActions>
+      </StyledMachiCardContent>
+      <StyledMachiCardActions>
         <ColorButton>Buy</ColorButton>
         <ColorButton
           onClick={() => {
@@ -86,7 +94,7 @@ export default function MediaCard({ card }: { card: MachiKoroCard }) {
           -
         </ColorButton>
         <ColorButton>{purchaseAmount}</ColorButton>
-      </CardActions>
-    </Card>
+      </StyledMachiCardActions>
+    </StyledMachiCard>
   );
 }

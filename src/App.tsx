@@ -24,6 +24,7 @@ import { CustomAccordion } from './BottomBar';
 import MachiCard2 from './MachiCard/MachiCard';
 import StructureCatalog from './StructureCatalog';
 import { machiKoroCards } from './cardLibrary';
+import { CardChip } from './CardChip/CardChip';
 
 const machiRed = '#3b350ff';
 const machiGreen = '#534d2b';
@@ -178,7 +179,10 @@ export default function App() {
       <CustomAccordion title={'The Title'} content={'The Content'} />
       <CardChip cardCount={2} cardName={'Named'}></CardChip>
       {}
-      <MachiCard2 card={machiKoroCards['Wheat Field']}></MachiCard2>
+      <MachiCard2
+        card={machiKoroCards['Wheat Field']}
+        color="blue"
+      ></MachiCard2>
       {/* <Accordion expanded={true}>
         <div>"Hey"</div>
       </Accordion> */}
@@ -186,13 +190,3 @@ export default function App() {
     </GameUI>
   );
 }
-
-const CardChip = ({ cardCount, cardName }: any) => {
-  return (
-    <Chip
-      avatar={cardCount ? <Avatar>{cardCount}</Avatar> : ''}
-      label={cardName}
-      sx={{ backgroundColor: machiBlue, color: 'white' }}
-    ></Chip>
-  );
-};
