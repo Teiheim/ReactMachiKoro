@@ -46,6 +46,7 @@ export const StyledMachiCardActions = styled(CardActions)`
   gap: 8px;
 `;
 
+
 // const CardComponent = ({ card }) => {
 //   return (
 //     <StyledCard>

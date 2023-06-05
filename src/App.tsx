@@ -176,8 +176,15 @@ export default function App() {
         </Paper>
       </Box>
       <ColorButton>Button</ColorButton> */}
-      <CustomAccordion title={'The Title'} content={'The Content'} />
-      <CardChip cardCount={2} cardName={'Named'}></CardChip>
+      <CustomAccordion
+        title={'The Title'}
+        content={'The Content'}
+        machiKoroDeck={machiKoroCards}
+      />
+      <CardChip
+        cardCount={machiKoroCards['Wheat Field'].amount}
+        cardName={machiKoroCards['Wheat Field'].structure.cardName}
+      ></CardChip>
       {}
       <MachiCard2
         card={machiKoroCards['Wheat Field']}
