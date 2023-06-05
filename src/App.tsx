@@ -25,6 +25,7 @@ import MachiCard2 from './MachiCard/MachiCard';
 import StructureCatalog from './StructureCatalog';
 import { machiKoroCards } from './cardLibrary';
 import { CardChip } from './CardChip/CardChip';
+import { GameRoomCreation } from './GameRoomCreation/GameRoomCreation';
 
 const machiRed = '#3b350ff';
 const machiGreen = '#534d2b';
@@ -121,79 +122,81 @@ const MachiCard = ({
 
 export default function App() {
   const card = machiKoroCards['Wheat Field'];
-  return (
-    <GameUI>
-      {/* <div>
-        <MachiCard></MachiCard>
-        <h1>Hello StackBlitz!</h1>
-        <p>Start editing to see some magic happen :^)</p>
-        <Box sx={{ width: '10vw', height: '14vw' }}>
-          <Card
-            sx={{
-              width: '10vw',
-              height: '14vw',
-              border: 5,
-              borderColor: machiPurple,
-              backgroundColor: machiPurple,
-              color: 'white',
-            }}
-          >
-            <Stack spacing={1}>
-              <CardHeader title="Card" />
-              <CardContent>
-                <Box
-                  sx={{ width: '90%', height: '5vw', backgroundColor: 'white' }}
-                ></Box>
-              </CardContent>
-            </Stack>
-          </Card>
-        </Box>
-        <CardChip cardCount={1} cardName={'Wheat Field'}></CardChip>
-      </div> */}
-      {/* <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          height: '100%',
-        }}
-      >
-        <Paper
-          sx={{
-            width: '50%',
-            height: '50%',
-            backgroundColor: machiBlue,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Box>
-            <TextField color="primary" variant="filled" label="Game Room ID" />
-            <Button>{'Primary'}</Button>
-          </Box>
-        </Paper>
-      </Box>
-      <ColorButton>Button</ColorButton> */}
-      <CustomAccordion
-        title={'The Title'}
-        content={'The Content'}
-        machiKoroDeck={machiKoroCards}
-      />
-      <CardChip
-        cardCount={machiKoroCards['Wheat Field'].amount}
-        cardName={machiKoroCards['Wheat Field'].structure.cardName}
-      ></CardChip>
-      {}
-      <MachiCard2
-        card={machiKoroCards['Wheat Field']}
-        color="blue"
-      ></MachiCard2>
-      {/* <Accordion expanded={true}>
-        <div>"Hey"</div>
-      </Accordion> */}
-      {/* <StructureCatalog /> */}
-    </GameUI>
-  );
+  return <GameRoomCreation />;
+  // return (
+  //   // <GameUI>
+
+  //     {/* <div>
+  //       <MachiCard></MachiCard>
+  //       <h1>Hello StackBlitz!</h1>
+  //       <p>Start editing to see some magic happen :^)</p>
+  //       <Box sx={{ width: '10vw', height: '14vw' }}>
+  //         <Card
+  //           sx={{
+  //             width: '10vw',
+  //             height: '14vw',
+  //             border: 5,
+  //             borderColor: machiPurple,
+  //             backgroundColor: machiPurple,
+  //             color: 'white',
+  //           }}
+  //         >
+  //           <Stack spacing={1}>
+  //             <CardHeader title="Card" />
+  //             <CardContent>
+  //               <Box
+  //                 sx={{ width: '90%', height: '5vw', backgroundColor: 'white' }}
+  //               ></Box>
+  //             </CardContent>
+  //           </Stack>
+  //         </Card>
+  //       </Box>
+  //       <CardChip cardCount={1} cardName={'Wheat Field'}></CardChip>
+  //     </div> */}
+  //     {/* <Box
+  //       sx={{
+  //         display: 'flex',
+  //         justifyContent: 'center',
+  //         alignItems: 'center',
+  //         width: '100%',
+  //         height: '100%',
+  //       }}
+  //     >
+  //       <Paper
+  //         sx={{
+  //           width: '50%',
+  //           height: '50%',
+  //           backgroundColor: machiBlue,
+  //           display: 'flex',
+  //           justifyContent: 'center',
+  //           alignItems: 'center',
+  //         }}
+  //       >
+  //         <Box>
+  //           <TextField color="primary" variant="filled" label="Game Room ID" />
+  //           <Button>{'Primary'}</Button>
+  //         </Box>
+  //       </Paper>
+  //     </Box>
+  //     <ColorButton>Button</ColorButton> */}
+  //     {/* <CustomAccordion
+  //       title={'The Title'}
+  //       content={'The Content'}
+  //       machiKoroDeck={machiKoroCards}
+  //     />
+  //     <CardChip
+  //       cardCount={machiKoroCards['Wheat Field'].amount}
+  //       cardName={machiKoroCards['Wheat Field'].structure.cardName}
+  //     ></CardChip>
+  //     {}
+  //     <MachiCard2
+  //       card={machiKoroCards['Wheat Field']}
+  //       color="blue"
+  //     ></MachiCard2> */}
+  //     {/* <Accordion expanded={true}>
+  //       <div>"Hey"</div>
+  //     </Accordion> */}
+  //     {/* <StructureCatalog /> */}
+  //   // </GameUI>
+  // );
 }
