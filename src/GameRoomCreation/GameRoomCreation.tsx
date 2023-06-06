@@ -10,7 +10,15 @@ export const GameRoomCreation = ({ createGame }) => {
   const [error, setError] = React.useState(false);
   const checkPlayerName = () => {
     if (playerName !== '') {
-      setPlayers([{ playerName: playerName }]);
+      console.log(error);
+      setError(false);
+      setPlayers([
+        { playerName: playerName },
+        { playerName: '' },
+        { playerName: '' },
+        { playerName: '' },
+      ]);
+      console.log(players[0].playerName);
     } else {
       setPlayerName(''), setError(true);
     }
@@ -45,11 +53,13 @@ export const GameRoomCreation = ({ createGame }) => {
             {'Machi Koro'}
           </Typography>
           <TextField
-            helperText={'Username is Empty'}
+            helperText={error ? 'Username is Empty' : ''}
             error={error}
             label="Player Name"
           ></TextField>
-          <MachiButton onClick={checkPlayerName()}>Create Game</MachiButton>
+          <MachiButton onClick={() => checkPlayerName()}>
+            Create Game
+          </MachiButton>
         </Stack>
       </Box>
     </Container>
