@@ -8,7 +8,15 @@ export const GameRoomCreation = ({ createGame }) => {
   const [players, setPlayers] = React.useState([]);
   const [playerName, setPlayerName] = React.useState('');
   const [error, setError] = React.useState(false);
+
+  const handleUpdatePlayer = (idx, value) => {
+    const updatedPlayers = [...players];
+    updatedPlayers[idx].playerName = value;
+    setPlayers(updatedPlayers);
+  };
+
   const checkPlayerName = () => {
+    console.log('Check');
     if (playerName !== '') {
       console.log(error);
       setError(false);
@@ -18,9 +26,9 @@ export const GameRoomCreation = ({ createGame }) => {
         { playerName: '' },
         { playerName: '' },
       ]);
-      console.log(players[0].playerName);
     } else {
-      setPlayerName(''), setError(true);
+      setPlayerName('');
+      setError(true);
     }
   };
   return (
@@ -46,6 +54,7 @@ export const GameRoomCreation = ({ createGame }) => {
           height: '50%',
           boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 1)',
           border: '2px solid black',
+          overflow: 'scroll',
         }}
       >
         <Stack spacing={1}>
@@ -54,12 +63,22 @@ export const GameRoomCreation = ({ createGame }) => {
           </Typography>
           <TextField
             helperText={error ? 'Username is Empty' : ''}
+            value={playerName}
+            onChange={(e) => setPlayerName(e.target.value)}
             error={error}
             label="Player Name"
           ></TextField>
           <MachiButton onClick={() => checkPlayerName()}>
             Create Game
           </MachiButton>
+          {players.map((value, index) => (
+            <TextField
+              key={index}
+              value={value.playerName}
+              onChange={(e) => handleUpdatePlayer(index, e.target.value)}
+            />
+          ))}
+          {players.length === 4 && <MachiButton>Start Game!</MachiButton>}
         </Stack>
       </Box>
     </Container>

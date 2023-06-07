@@ -5,7 +5,7 @@ import { machiKoroCards } from '../cardLibrary';
 
 export const machiMachine = createMachine({
   id: 'machiKoro',
-  initial: 'gameRoom.entername',
+  initial: 'gameRoom',
   context: {
     deck: machiKoroCards,
     players: [],
@@ -15,6 +15,7 @@ export const machiMachine = createMachine({
   },
   states: {
     gameRoom: {
+      initial: 'enterName',
       states: {
         joinGame: {
           //Create Game Room
@@ -24,7 +25,7 @@ export const machiMachine = createMachine({
           //The UI asks for a name
           on: {
             SETUP_GAME: {
-              target: 'playGame.setBoard',
+              target: '#playGame',
               //actions: console.log(//save name in context)
             },
           },
@@ -32,10 +33,12 @@ export const machiMachine = createMachine({
         otherPlayers: {
           //Connection now waits for other players to join
         },
-        setBoard: {}
+        setBoard: {},
       },
     },
     playGame: {
+      id: 'playGame',
+      initial: 'rollDice',
       states: {
         rollDice: {},
         cardEffects: {},

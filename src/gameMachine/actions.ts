@@ -9,10 +9,24 @@ import {
   MachiKoroGame,
 } from '../types';
 
+interface CreateGameEvent {
+  data: {
+    players: { playerName: string }[];
+    roomName: string;
+  };
+}
 export const createGame = assign({
-  players: (_, event) => [],
+  players: (_, event: CreateGameEvent): Player => {
+    const generatedPlayers = [];
+    event.data.players.forEach((player) =>
+      generatedPlayers.push({
+        playerName: player.playerName,
+        id: 5,
+      })
+    );
+  },
   //@NOTE write about this in blog
-  cards: (_, event) => {
+  cards: (_, event: CreateGameEvent) => {
     const newGameDeck = structuredClone(machiKoroCards);
     event.data.players.forEach(() => {
       decrementCard(newGameDeck, 'Wheat Field');
@@ -22,7 +36,7 @@ export const createGame = assign({
   },
   playerInTurn: 0,
   cardHistory: [],
-  roomName: (_, event) => event.data.roomName,
+  roomName: (_, event: CreateGameEvent) => event.data.roomName,
 });
 
 export const setGameTurn = assign({

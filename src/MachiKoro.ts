@@ -11,7 +11,7 @@ import { interpret } from 'xstate';
 // React.useCallback(() => {})
 // Send events
 
-export const useMachiMachine = ({}) => {
+export const useMachiMachine = () => {
   const [state, send] = useMachine(machiMachine);
 
   const createMachiRoom = (
