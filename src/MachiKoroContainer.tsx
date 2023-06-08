@@ -2,9 +2,11 @@ import * as React from 'react';
 import { Box } from '@mui/material';
 import { CustomAccordion } from './BottomBar';
 import { machiKoroCards } from './cardLibrary';
-import SplitPane from 'react-split-pane-v2';
+import { machiKoroGame } from './types';
+import SplitPane from 'react-split-pane';
+import { CardChip } from './CardChip/CardChip';
 
-export const MainContainer: React.FC = () => {
+export const MainContainer: React.FC = ({ machiContext: MachiKoroGame }) => {
   return (
     <Box
       sx={{
@@ -19,6 +21,14 @@ export const MainContainer: React.FC = () => {
         },
       }}
     >
+      machiContext.players.forEach((player)=>{}) const generatePlayerCity =
+      (city: City[]) =>{' '}
+      {city.forEach((business) => (
+        <CardChip
+          cardCount={business.amount}
+          cardName={business.cardName}
+        ></CardChip>
+      ))}
       <SplitPane split="vertical" defaultSize="33%">
         <div>pane 1 size: 33%</div>
         <SplitPane split="vertical" defaultSize="50%">

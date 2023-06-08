@@ -127,6 +127,6 @@ export default function App() {
 
   const machi = useMachiMachine();
   console.log(machi.state);
-  return <MainContainer></MainContainer>;
+  // return <MainContainer></MainContainer>;
   //return <GameRoomCreation createGame={machi.createMachiRoom} />;
 }
