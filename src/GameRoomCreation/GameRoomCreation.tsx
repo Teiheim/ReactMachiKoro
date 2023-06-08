@@ -78,7 +78,11 @@ export const GameRoomCreation = ({ createGame }) => {
               onChange={(e) => handleUpdatePlayer(index, e.target.value)}
             />
           ))}
-          {players.length === 4 && <MachiButton>Start Game!</MachiButton>}
+          {players.length === 4 && (
+            <MachiButton onClick={() => createGame(players, 'Default')}>
+              Start Game!
+            </MachiButton>
+          )}
         </Stack>
       </Box>
     </Container>

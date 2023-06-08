@@ -125,5 +125,6 @@ export default function App() {
   const card = machiKoroCards['Wheat Field'];
 
   const machi = useMachiMachine();
-  return <GameRoomCreation />;
+  console.log(machi.state);
+  return <GameRoomCreation createGame={machi.createMachiRoom} />;
 }

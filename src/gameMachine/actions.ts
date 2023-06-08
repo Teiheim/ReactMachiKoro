@@ -82,11 +82,12 @@ const getActivatedCards = (
   const activatedCards = { green: [], blue: [], red: [], purple: [] };
   const completeField = players.map((player) => player.city).flat();
 
-  completeField.forEach((structure: City) => {
-    const completeCardInfo: Structure = machiKoroCards[structure.cardName];
+  completeField.forEach((building: City) => {
+    const completeCardInfo: Structure =
+      machiKoroCards[building.cardName].structure;
     const canActivateCard: boolean = completeCardInfo.activation.includes(dice);
     const cardColor: string = completeCardInfo.color;
-    if (canActivateCard) activatedCards[cardColor].push(structure);
+    if (canActivateCard) activatedCards[cardColor].push(building);
   });
 };
 

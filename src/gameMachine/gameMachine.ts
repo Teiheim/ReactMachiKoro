@@ -2,6 +2,7 @@ import { useMachine } from '@xstate/react';
 import { createMachine } from 'xstate';
 import { Structure, Landmark, Player } from '../types';
 import { machiKoroCards } from '../cardLibrary';
+import { createGame } from './actions';
 
 export const machiMachine = createMachine({
   id: 'machiKoro',
@@ -26,7 +27,7 @@ export const machiMachine = createMachine({
           on: {
             SETUP_GAME: {
               target: '#playGame',
-              //actions: console.log(//save name in context)
+              actions: createGame,
             },
           },
         },
