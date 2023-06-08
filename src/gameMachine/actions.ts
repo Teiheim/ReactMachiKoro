@@ -1,6 +1,8 @@
 import { assign } from 'xstate';
 import { machiKoroCards } from '../cardLibrary';
 import { decrementCard, removeMoneyFromPlayer } from './utils';
+import { createPlayers } from './utils';
+
 import {
   Structure,
   Player,
@@ -16,15 +18,8 @@ interface CreateGameEvent {
   };
 }
 export const createGame = assign({
-  players: (_, event: CreateGameEvent): Player => {
-    const generatedPlayers = [];
-    event.data.players.forEach((player) =>
-      generatedPlayers.push({
-        playerName: player.playerName,
-        id: 5,
-      })
-    );
-  },
+  players: (_, event: CreateGameEvent): Player[] =>
+    createPlayers(event.data.players),
   //@NOTE write about this in blog
   cards: (_, event: CreateGameEvent) => {
     const newGameDeck = structuredClone(machiKoroCards);
@@ -39,12 +34,15 @@ export const createGame = assign({
   roomName: (_, event: CreateGameEvent) => event.data.roomName,
 });
 
+interface machiGameEvent {
+  data: MachiKoroGame;
+}
 export const setGameTurn = assign({
-  players: (_, event) => event.data.players,
-  cards: (_, event) => event.data.cards,
-  playerInTurn: (_, event) => event.data.playerInTurn,
-  cardHistory: (_, event) => event.data.cardHistory,
-  roomName: (_, event) => event.data.roomName,
+  players: (_, event: machiGameEvent) => event.data.players,
+  cards: (_, event: machiGameEvent) => event.data.cards,
+  playerInTurn: (_, event: machiGameEvent) => event.data.playerInTurn,
+  cardHistory: (_, event: machiGameEvent) => event.data.cardHistory,
+  roomName: (_, event: machiGameEvent) => event.data.roomName,
 });
 
 export const addStructureToPlayer = assign({

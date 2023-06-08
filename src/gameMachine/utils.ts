@@ -7,13 +7,16 @@ import {
   MachiKoroGame,
 } from '../types';
 import { machiKoroCards } from '../cardLibrary';
+import generate from 'random-words';
 
-export const createPlayers = (players: { name: string; id: string }[]) => {
+export const createPlayers = (
+  players: { playerName: string; id?: string }[]
+) => {
   const machiPlayers = [];
-  players.forEach((player: { name: string; id: string }) => {
+  players.forEach((player: { playerName: string; id?: string }) => {
     machiPlayers.push({
-      playerName: player.name,
-      id: player.id,
+      playerName: player.playerName,
+      id: generate(3).toString(),
       money: 3,
       city: [
         { cardName: 'Wheat Field', amount: 1 },
