@@ -27,6 +27,7 @@ import { machiKoroCards } from './cardLibrary';
 import { CardChip } from './CardChip/CardChip';
 import { GameRoomCreation } from './GameRoomCreation/GameRoomCreation';
 import { useMachiMachine } from './MachiKoro';
+import { MainContainer } from './MachiKoroContainer';
 
 const machiRed = '#3b350ff';
 const machiGreen = '#534d2b';
@@ -126,5 +127,6 @@ export default function App() {
 
   const machi = useMachiMachine();
   console.log(machi.state);
-  return <GameRoomCreation createGame={machi.createMachiRoom} />;
+  return <MainContainer></MainContainer>;
+  //return <GameRoomCreation createGame={machi.createMachiRoom} />;
 }
