@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Card,
   CardHeader,
@@ -6,8 +6,8 @@ import {
   CardContent,
   CardActions,
   Typography,
-} from '@mui/material';
-import styled from '@emotion/styled';
+} from "@mui/material";
+import styled from "@emotion/styled";
 
 export const StyledMachiCard = styled(Card)`
   width: 100%;
@@ -24,8 +24,6 @@ export const StyledMachiCard = styled(Card)`
 export const StyledMachiCardHeader = styled(CardHeader)`
   color: white;
   font-weight: 700;
-
-
 `;
 
 export const StyledMachiCardMedia = styled(CardMedia)`
@@ -39,13 +37,11 @@ export const StyledMachiCardContent = styled(CardContent)`
 `;
 
 export const StyledMachiCardActions = styled(CardActions)`
-
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 8px;
 `;
-
 
 // const CardComponent = ({ card }) => {
 //   return (

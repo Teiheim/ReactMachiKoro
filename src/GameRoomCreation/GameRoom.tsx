@@ -1,12 +1,16 @@
-import * as React from 'react';
-import { Container, Box, Typography } from '@mui/material';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import { ColorButton as MachiButton } from '../MachiButton/MachiButton';
+import * as React from "react";
+import { Container, Box, Typography } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Stack from "@mui/material/Stack";
+import { ColorButton as MachiButton } from "../MachiButton/MachiButton";
+import {
+  StyledGameRoomContainer,
+  StyledGameRoomBox,
+} from "./GameRoomStyles/GameRoomStyles";
 
 export const GameRoomCreation = ({ createGame }) => {
   const [players, setPlayers] = React.useState([]);
-  const [playerName, setPlayerName] = React.useState('');
+  const [playerName, setPlayerName] = React.useState("");
   const [error, setError] = React.useState(false);
 
   const handleUpdatePlayer = (idx, value) => {
@@ -16,53 +20,30 @@ export const GameRoomCreation = ({ createGame }) => {
   };
 
   const checkPlayerName = () => {
-    console.log('Check');
-    if (playerName !== '') {
+    console.log("Check");
+    if (playerName !== "") {
       console.log(error);
       setError(false);
       setPlayers([
         { playerName: playerName },
-        { playerName: '' },
-        { playerName: '' },
-        { playerName: '' },
+        { playerName: "" },
+        { playerName: "" },
+        { playerName: "" },
       ]);
     } else {
-      setPlayerName('');
+      setPlayerName("");
       setError(true);
     }
   };
   return (
-    <Container
-      maxWidth="sm"
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        borderSizing: 'border-box',
-      }}
-    >
-      <Box
-        sx={{
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#f2f2f2',
-          padding: '16px',
-          borderRadius: '4px',
-          width: '100%',
-          height: '50%',
-          boxShadow: '2px 2px 0px 0px rgba(0, 0, 0, 1)',
-          border: '2px solid black',
-          overflow: 'scroll',
-        }}
-      >
+    <StyledGameRoomContainer maxWidth="sm">
+      <StyledGameRoomBox>
         <Stack spacing={1}>
           <Typography variant="h1" textAlign="center" display="block">
-            {'Machi Koro'}
+            {"Machi Koro"}
           </Typography>
           <TextField
-            helperText={error ? 'Username is Empty' : ''}
+            helperText={error ? "Username is Empty" : ""}
             value={playerName}
             onChange={(e) => setPlayerName(e.target.value)}
             error={error}
@@ -79,12 +60,12 @@ export const GameRoomCreation = ({ createGame }) => {
             />
           ))}
           {players.length === 4 && (
-            <MachiButton onClick={() => createGame(players, 'Default')}>
+            <MachiButton onClick={() => createGame(players, "Default")}>
               Start Game!
             </MachiButton>
           )}
         </Stack>
-      </Box>
-    </Container>
+      </StyledGameRoomBox>
+    </StyledGameRoomContainer>
   );
 };

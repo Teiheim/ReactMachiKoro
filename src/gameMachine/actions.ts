@@ -1,7 +1,7 @@
-import { assign } from 'xstate';
-import { machiKoroCards } from '../cardLibrary';
-import { decrementCard, removeMoneyFromPlayer } from './utils';
-import { createPlayers } from './utils';
+import { assign } from "xstate";
+import { machiKoroCards } from "../cardLibrary";
+import { decrementCard, removeMoneyFromPlayer } from "./utils";
+import { createPlayers } from "./utils";
 
 import {
   Structure,
@@ -9,7 +9,7 @@ import {
   MachiKoroDeck,
   City,
   MachiKoroGame,
-} from '../types';
+} from "../types";
 
 interface CreateGameEvent {
   data: {
@@ -24,8 +24,8 @@ export const createGame = assign({
   cards: (_, event: CreateGameEvent) => {
     const newGameDeck = structuredClone(machiKoroCards);
     event.data.players.forEach(() => {
-      decrementCard(newGameDeck, 'Wheat Field');
-      decrementCard(newGameDeck, 'Bakery');
+      decrementCard(newGameDeck, "Wheat Field");
+      decrementCard(newGameDeck, "Bakery");
     });
     return newGameDeck;
   },
@@ -64,7 +64,7 @@ export const addStructureToPlayer = assign({
     }
   ) => {
     const oldPlayers = context.players;
-    event.data.cards.reduce(
+    return event.data.cards.reduce(
       (players: Player[], card) =>
         removeMoneyFromPlayer(players, event.data.playerNum, card.amount),
       oldPlayers
